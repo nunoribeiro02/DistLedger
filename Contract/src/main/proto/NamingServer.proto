@@ -1,0 +1,24 @@
+syntax = "proto3";
+package pt.ulisboa.tecnico.distledger.contract.namingserver;
+
+message LookUpRequest {
+  string serviceName = 1;
+  string qualifier = 2;
+}
+
+message LookUpResponse {
+  repeated string host_port = 1;
+}
+
+message SearchServersRequest {
+  string serviceName = 1;
+}
+
+message SearchServersResponse {
+  repeated string qualifier = 1;
+}
+
+service NamingService {
+  rpc lookUp(LookUpRequest) returns (LookUpResponse);
+  rpc searchServers(SearchServersRequest) returns (SearchServersResponse);
+}
